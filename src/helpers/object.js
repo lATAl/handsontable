@@ -18,7 +18,7 @@ export function duckSchema(object) {
         schema[key] = duckSchema(value);
 
       } else if (Array.isArray(value)) {
-        if (value.length && typeof value[0] === 'object' && !Array.isArray(value[0])) {
+        if (key != '$scope' && value.length && typeof value[0] === 'object' && !Array.isArray(value[0])) {
           schema[key] = [duckSchema(value[0])];
         } else {
           schema[key] = [];
